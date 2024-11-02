@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center">Gráficos Interactivos</h1>
+
+        <div class="form-group mt-4">
+            <label for="dataSelector">Selecciona el conjunto de datos:</label>
+            <select id="dataSelector" class="form-control">
+                <option value="1">Conjunto de Datos 1</option>
+                <option value="2">Conjunto de Datos 2</option>
+            </select>
+        </div>
+
+     
+        <div class="mt-4">
+            <div class="col-md-12">
+                <div id="barrasChart"></div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <div class="col-md-12">
+                <div id="donutChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
