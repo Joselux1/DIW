@@ -19,7 +19,7 @@ let arraychangeofText = ["soy_el_Text1","soy_el_Text2","soy_el_Text3"];
 
 
 function changeofMusic(src){ 
-//funcion para llamar  al src  (url para video o musica) donde tenemos Onload que es para la carga y onplay para que ejecute la musica al ser cambiada
+//funcion para llamar  al src  (url para video o musica) donde tenemos Onload que es para la carga y play para que ejecute la musica al ser cambiada
 
             musicInteracion.src=src;
             musicInteracion.onload;
