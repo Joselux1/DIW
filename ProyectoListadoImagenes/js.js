@@ -1,46 +1,47 @@
-
+//carga del DOM
   document.addEventListener("DOMContentLoaded", () => {
 
-    let desplegable = document.getElementById("desplegable");
+    const desplegable = document.getElementById("desplegable");
     
-  
-    let filas = document.getElementById("filas");
-  
-                        
-       let contadorImg = 0;
-  
-       function updateImageList() {
-           let numImg = parseInt(desplegable.value);
-     
-       
-           for (let i = 1; i <= numImg; i++) {
-            contadorImg++;
-            
-        
-               let url = cacheBuster(`https://picsum.photos/200/300?random=${contadorImg}`);
 
+    const filas = document.getElementById("filas");
+  
 
-
-               filas.innerHTML += 
-                   `<tr>
-                       <td><img class="img1" src="${url}" loading="lazy"  ${contadorImg}"></td>
-                       <td>${contadorImg}</td>
-                       <td>Descripción del elemento ${contadorImg}</td>
-                   </tr>`;
-           }
+    function ActualizarImg() {
+     // Obtenemos el valor actual del desplegable 
+      const numImg = parseInt(desplegable.value);
+  
+    // bucle desde 1 hasta el número de imágenes deseado.
+      for (let i = 1; i <= numImg; i++) {
+    // cacheBuster  Carga de img efectiva
+        const url = cacheBuster(`https://picsum.photos/200/300?random=${i}`);
+        //Manipulacion de las tablas con innerHTML
+        filas.innerHTML += 
+                          `<tr>
+                            <td><img class="img1" src="${url}" loading="lazy"></td>
+                            <td>${i}</td>
+                            <td>Descripción del elemento ${i}</td>
+                          </tr>`;
+      }
     }
-  
+  /// Mensaje en consola indicando que el DOM se ha cargado completamente.
     console.log("DOM fully loaded and parsed");
-    desplegable.addEventListener("change", updateImageList);
-  
-  
-    updateImageList();
+    desplegable.addEventListener("change", ActualizarImg);
+
+    ActualizarImg();
   });
   
-  
+  // generar una URL Unica al agregar un parametro de timestamp
   function cacheBuster(url) {
     return `${url}&cb=${new Date().getTime()}`;
   }
   
+
+
+
+
+
+
+
 
 
