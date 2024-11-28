@@ -1,87 +1,72 @@
-let arrayTabla = []; // Array vacio para insertar datos .
+let arrayTabla = []; // Array vacio para insertar datos
+
 
 
 function crearTabla() {
+  let cuerpo = $('#cuerpoTabla')[0]; // Usamos el tbody con jquery.
 
-  let cuerpo = $('#cuerpoTabla')[0]; //aqui le pasamos el id con jquery del tbody para crear la tabla y la posicion 
+  cuerpo.innerHTML = ""; // Limpiamos la tabla antes de generarla.
 
- 
- 
-  cuerpo.innerHTML = ""; //limpiamos la tabla antes de llamarla
-
-  
-
-
-
-  for(let i = 0; i < arrayTabla.length; i++) { //recorremos el array 
+  for (let i = 0; i < arrayTabla.length; i++) {    // Recorremos el array.
 
     cuerpo.innerHTML += `<tr> 
-                  
-                   <td id="tarea">${arrayTabla[i]}</td>
-                        <td>
-                        <button class="btn btn-success btn-sm py-2" id="btnCompletar" >Completar</button>
-                        <button class="btn btn-warning btn-sm text-white py-2 m-1">Editar</button>
-                        <button class="btn btn-danger btn-sm py-2 m-1 id="${i}" onclick = btnEliminar(${i}) >Eliminar</button>
-                      </td>
-                  </tr>`; //aqui creamos las filas de las tablas.
+                   <td id="tarea-${i}">${arrayTabla[i]}</td>
+                   <td>
+                        <button class="btn btn-success btn-sm py-2" onclick="btnCompletar(${i})">Completar</button>
+                        <button class="btn btn-warning btn-sm text-white py-2 m-1" onclick="btnEditar(${i})">Editar</button>
+                        <button class="btn btn-danger btn-sm py-2 m-1" id="${i}" onclick="btnEliminar(${i})">Eliminar</button>
+                   </td>
+                  </tr>`;
   }
+}
 
-  
-$("#btnCompletar").click(function() { 
+function btnCompletar(id) {
 
-  console.log("Entramos")
-          
-  $("#tarea").toggleClass("tachado");
+  $(`#tarea-${id}`).toggleClass("tachado");
+
+}
+
+function btnEliminar(id) {
+  if (confirm("¿Estás seguro que quieres eliminar esta tarea?")) {
+
+    arrayTabla.splice(id, 1); // Eliminamos el elemento del array.
+    crearTabla(); // Actualizamos  la tabla.
+
+  } else {
+    alert("No se ha podido eliminar.");
+  }
+}
+
+function btnEditar(id) {
+
+  let nuevaTarea = prompt("Edita la tarea:", arrayTabla[id]); // Pedimos el nuevo valor.
+
+  if (nuevaTarea !== null && nuevaTarea.trim() !== "") { //usamos el .trim para los espacios en blancos
+    arrayTabla[id] = nuevaTarea; // Actualizamos el valor en el array.
+    crearTabla(); // Volvemos a generar la tabla.
+  } else {
+    alert("No se realizaron cambios.");
+  }
+}
+function aplicarFiltro(filtro) {
+  filtroActual = filtro; // Actualizamos el filtro actual.
+  crearTabla(); // Regeneramos la tabla con el nuevo filtro.
+}
 
 
+$(document).ready(function () {
+  let guardarDatos = $('#guardarDatos');
+
+  guardarDatos.click(function () {
+    let añadir = $('#añadirTarea').val(); // Obtenemos el valor del input.
+
+    if (añadir) {
+      arrayTabla.push(añadir); // Añadimos tarea al array.
+      crearTabla(); // Actualizamos la tabla.
+    } else {
+      alert(" ingresa una tarea valida");
+    }
   });
- 
-
-}
-
-function btnEliminar(id){
-
-  if (confirm("Estas seguro que quieres eliminar esta tarea")){ //aqui hacemos la condicion que si pulsammos en el boton eliminar le pasa  el id de la fila  entonces entramos en el if .
-  arrayTabla.splice(id,1);  
-  crearTabla();
-
-  }else{
-
-  alert("No se ha podido Eliminar ") 
-
-}
-}
-
-
-
-
-
-
-
-$(document).ready(function() { //ejecuta la funcion para que se carge el DOM
-   
-
-   let guardarDatos =$('#guardarDatos');
- 
-guardarDatos.click(function(){
   
-    let añadir = $('#añadirTarea').val();// añadimos el valor con jquery .val();
-
-    if(añadir){
-    arrayTabla.push(añadir);//añadimos tarea ala tabla
-    crearTabla();//actualizamos tabla
-    }else{
-        alert("Por favor, ingresa una tarea.");
-      }
-    
-
+  console.log("DOM CARGADO PAPÁ");
 });
-
-
-
-
-  console.log("DOM CARGADO PAPÁ")
-
-  });
-
-
