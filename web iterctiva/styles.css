@@ -1,0 +1,82 @@
+body {
+    font-family:helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.nav-enlaces {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-enlaces li {
+    display: inline;
+}
+
+.nav-enlaces a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.theme-controls button {
+    all: unset; /* Elimina todos los estilos predeterminados del botón */
+    cursor: pointer; /* Añade el cursor de puntero */
+    margin: 5px;
+   
+}
+
+
+
+main {
+    padding: 150px;
+}
+
+.content, .click-counter {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: grey;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.modo-Oscuro{
+    background-color: black;
+    color: white;
+  }
+.modo-Claro{
+
+    background-color: white;
+    color: black;
+
+
+}
+.footer-claro{
+
+    color: white;
+
+
+}
+
+
