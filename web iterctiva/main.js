@@ -12,7 +12,7 @@ const body = document.getElementById("default");
 
 
 cambiarTema.addEventListener("click", function () {
-    // Alterna entre las clases "dark-mode" y "light-mode"
+  
     if (body.classList.contains("modo-Claro")) {
       body.classList.remove("modo-Claro");
       body.classList.add("modo-Oscuro");
